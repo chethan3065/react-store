@@ -1,0 +1,7 @@
+.Footer-style {
+    /* display:flex; */
+    text-align: center;
+    /* justify-content: space-between; */
+    background-color: silver;
+    padding: 0.01%;
+}
