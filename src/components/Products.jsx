@@ -7,6 +7,12 @@ export default function Products() {
   const addToCart = (id) => {
     setCart({ ...cart, [id]: 1 });
   };
+  const increment = (id) => {
+    setCart({ ...cart, [id]: cart[id] + 1 });
+  }
+  const decrement = (id) => {
+    setCart({ ...cart, [id]: cart[id] - 1 });
+  }
   return (
     <>
       <h3>{user.name}</h3>
@@ -15,7 +21,16 @@ export default function Products() {
           <div key={index} className="App-Products-Box">
             <h3>{value.name}</h3>
             <h4>{value.price}</h4>
+            {cart[value.id] > 0 ? (
+              <div>
+                <button onClick={() => decrement(value.id)}>-</button>
+                {cart[value.id]}
+                <button onClick={() => increment(value.id)}>+</button> 
+              </div>
+                
+            ) : (
             <button onClick={() => addToCart(value.id)}>Add to Cart</button>
+            )}
           </div>
         ))}
       </div>

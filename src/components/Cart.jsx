@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { appContext } from "../App";
 import { useNavigate } from "react-router-dom";
 export default function Cart() {
-  const { products, cart, setCart, orders, setOrders, user } =
-    useContext(appContext);
+  const { products, cart, setCart, orders, setOrders, user } = useContext(appContext);
   const Navigate = useNavigate();
   const [orderValue, setOrderValue] = useState(0);
   const handleDelete = (id) => {
@@ -21,7 +20,7 @@ export default function Cart() {
       ...orders,
       {
         email: user.email,
-        orderDate: Date(),
+        order_Date: Date(),
         items: cart,
         status: "pending",
         total: orderValue,
@@ -30,6 +29,7 @@ export default function Cart() {
     setCart({});
     Navigate("/orders")
   };
+
   useEffect(() => {
     setOrderValue(
       products.reduce((sum, value) => {
@@ -57,6 +57,7 @@ export default function Cart() {
           )}
           <h3>Order Value:{orderValue}</h3>
           <p>
+            <button onClick={logInOrder}>Login to Order</button>
             <button onClick={placeOrder}>Place Order</button>
           </p>
         </>
